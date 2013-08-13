@@ -12,7 +12,12 @@ db.once('open', function() {
 });
 
 var userSchema = new Schema({
-  username: String,
+  username: {
+    type: String,
+    unique: true,
+    trim: true,
+    required: true
+  },
   apiToken: String,
   firstName: String,
   lastName: String,
