@@ -24,7 +24,6 @@ module.exports = function(app) {
 		app.use(express.cookieParser('your secret here'));
 		app.use(express.session());
 		app.use(app.router);
-		app.use(require('less-middleware')({ src: __dirname + '/../public' }));
 		app.use(express.static(__dirname + '/../public'));
 		app.use(errorHandler)
 	});
