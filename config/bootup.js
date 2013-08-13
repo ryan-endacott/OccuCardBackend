@@ -1,6 +1,7 @@
 
 var config = require('./config'),
-	express = require('express');
+	express = require('express'),
+	db = require('../app/db'); // Connect to db.
 
 
 // Do express configuration and middleware
