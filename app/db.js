@@ -14,9 +14,12 @@ db.once('open', function() {
 var userSchema = new Schema({
   username: {
     type: String,
-    unique: true,
-    trim: true,
-    required: true
+    required: true,
+// There is a mongoose bug in handling uniqueness index.
+// Can possibly use a custom validation that is subject to race conditions.
+// http://nraj.tumblr.com/post/38706353543/handling-uniqueness-validation-in-mongo-mongoose
+//    unique: true,
+    trim: true
   },
   apiToken: String,
   firstName: String,
