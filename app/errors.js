@@ -1,5 +1,5 @@
 module.exports = {
-  badRequest: function (err) {
-    throw { status: 400, error: err};
+  badRequestError: function(err, res) {
+    res.send(400, err);
   }
-}
+};
