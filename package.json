@@ -1,0 +1,21 @@
+{
+  "name": "bizbackend",
+  "version": "0.0.1",
+  "description": "Backend for business card app.",
+  "main": "server.js",
+  "dependencies": {
+    "express": "~3.3.5",
+    "jade": "~0.34.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ryan-endacott/bizbackend.git"
+  },
+  "author": "Ryan Endacott",
+  "readmeFilename": "README.md"
+}
