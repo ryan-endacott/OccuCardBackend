@@ -4,6 +4,11 @@ var config = require('./config'),
 	db = require('../app/db'); // Connect to db.
 
 
+function errorHandler(err, req, res) {
+	res.status(err.status || 500);
+	res.json(err);
+}
+
 // Do express configuration and middleware
 
 module.exports = function(app) {
@@ -21,6 +26,7 @@ module.exports = function(app) {
 		app.use(app.router);
 		app.use(require('less-middleware')({ src: __dirname + '/../public' }));
 		app.use(express.static(__dirname + '/../public'));
+		app.use(errorHandler)
 	});
 
 	app.configure('development', function(){
