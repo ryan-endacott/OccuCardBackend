@@ -20,6 +20,10 @@ var userSchema = new Schema({
   contacts: [{type : mongoose.Schema.ObjectId, ref : 'User'}]
 });
 
+userSchema.methods.generateToken = function() {
+  this.apiToken = 'randomlygeneratedUUID';
+};
+
 module.exports = {
   User: mongoose.model('User', userSchema)
 }
