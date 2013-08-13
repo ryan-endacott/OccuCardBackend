@@ -1,8 +1,22 @@
-// Config file
+// Configuration
 
-var config = {};
+// Try to load from secret config, otherwise use environment variables (heroku)
 
-config.port = process.env.PORT || 3000;
+var s;
 
+try {
+  s = require ('./secretConfig');
+}
+catch (e) {
+  s = {};
+  s.db = {};
+}
+
+var config = {
+  port: process.env.PORT || 3000,
+  db: {
+    uri: s.db.uri || process.env.DB
+  }
+};
 
 module.exports = config;
