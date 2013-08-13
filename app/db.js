@@ -12,6 +12,8 @@ db.once('open', function() {
 });
 
 var personSchema = new Schema({
+  username: String,
+  apiToken: String,
   firstName: String,
   lastName: String,
   phoneNumber: String,
