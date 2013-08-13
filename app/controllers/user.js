@@ -1,5 +1,5 @@
 var db = require('../db'),
-  user = db.User,
+  User = db.User,
   errors = require('../errors'),
   badRequest = errors.badRequest;
 
