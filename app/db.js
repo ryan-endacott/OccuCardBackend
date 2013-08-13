@@ -11,16 +11,16 @@ db.once('open', function() {
   console.log('Successfully connected to database!');
 });
 
-var personSchema = new Schema({
+var userSchema = new Schema({
   username: String,
   apiToken: String,
   firstName: String,
   lastName: String,
   phoneNumber: String,
-  contacts: [{type : mongoose.Schema.ObjectId, ref : 'Person'}]
+  contacts: [{type : mongoose.Schema.ObjectId, ref : 'User'}]
 });
 
 module.exports = {
-  Person: mongoose.model('Person', personSchema)
+  User: mongoose.model('User', userSchema)
 }
 
