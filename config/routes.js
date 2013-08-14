@@ -3,6 +3,7 @@
 // Controllers
 var index = require('../app/controllers/index'),
   user = require('../app/controllers/user'),
+  contacts = require('../app/controllers/contacts'),
   auth = require('./auth');
 
 module.exports = function(app) {
