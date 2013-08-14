@@ -3,7 +3,7 @@ var db = require('../db'),
   errors = require('../errors'),
   badRequest = errors.BadRequestError;
 
-exports.register = function(req, res, next){
+exports.register = function(req, res, next) {
   var user = new User(req.body.user);
   user.generateToken();
   user.save(function(err, user) {
@@ -12,6 +12,5 @@ exports.register = function(req, res, next){
   });
 };
 
-exports.update = function(req, res){
-
+exports.update = function(req, res) {
 };
