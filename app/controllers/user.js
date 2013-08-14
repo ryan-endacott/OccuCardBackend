@@ -13,4 +13,8 @@ exports.register = function(req, res, next) {
 };
 
 exports.update = function(req, res) {
+  req.user.set(req.body.user).save(function(err, user) {
+    if (err) return badRequest(err, res);
+    res.json(user);
+  });
 };
