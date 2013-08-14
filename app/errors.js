@@ -15,6 +15,8 @@ module.exports = {
   },
 
   internalServerError: function(err, res) {
+    console.log('Internal server error:');
+    console.log(err);
     res.send(500, {
       error: {
         code: 500,
