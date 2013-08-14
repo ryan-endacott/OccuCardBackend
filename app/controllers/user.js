@@ -1,9 +1,9 @@
 var db = require('../db'),
   User = db.User,
   errors = require('../errors'),
-  badRequest = errors.BadRequestError;
+  badRequest = errors.badRequestError;
 
-exports.register = function(req, res, next) {
+exports.register = function(req, res) {
   var user = new User(req.body.user);
   user.generateToken();
   user.save(function(err, user) {
