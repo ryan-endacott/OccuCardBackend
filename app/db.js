@@ -1,7 +1,8 @@
 
 var mongoose = require('mongoose'),
   config = require('../config/config'),
-  Schema = mongoose.Schema;
+  Schema = mongoose.Schema,
+  uuid = require('node-uuid');
 
 mongoose.connect(config.db.uri);
 
@@ -22,7 +23,7 @@ var userSchema = new Schema({
 });
 
 userSchema.methods.generateToken = function() {
-  this.apiToken = 'randomlygeneratedUUID';
+  this.apiToken = uuid.v4();
 };
 
 module.exports = {
