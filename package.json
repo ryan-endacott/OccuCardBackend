@@ -6,7 +6,7 @@
   "dependencies": {
     "express": "~3.3.5",
     "jade": "~0.34.1",
-    "mongoose": "~3.6.16"
+    "mongoose": "~3.6.17"
   },
   "devDependencies": {},
   "scripts": {
