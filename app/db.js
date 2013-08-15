@@ -26,6 +26,15 @@ userSchema.methods.generateToken = function() {
   this.apiToken = uuid.v4();
 };
 
+// Don't return API Token of any user
+// specify the transform schema option
+if (!userSchema.options.toJSON) userSchema.options.toJSON = {};
+userSchema.options.toJSON.transform = function (doc, ret, options) {
+  delete ret._id;
+  delete ret.apiToken;
+  delete ret.__v;
+}
+
 module.exports = {
   User: mongoose.model('User', userSchema)
 }
