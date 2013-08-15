@@ -2,7 +2,9 @@
 var mongoose = require('mongoose'),
   config = require('../config/config'),
   Schema = mongoose.Schema,
-  uuid = require('node-uuid');
+  uuid = require('node-uuid'),
+  bcrypt = require('bcrypt'),
+  SALT_WORK_FACTOR = 10;
 
 mongoose.connect(config.db.uri);
 
