@@ -22,7 +22,7 @@ var userSchema = new Schema({
   contacts: [{type : mongoose.Schema.ObjectId, ref : 'User'}]
 });
 
-userSchema.methods.generateToken = function() {
+userSchema.methods.generateApiToken = function() {
   this.apiToken = uuid.v4();
 };
 
