@@ -8,7 +8,7 @@ exports.register = function(req, res) {
   user.generateToken();
   user.save(function(err, user) {
     if (err) return badRequest(err, res);
-    res.json(user);
+    res.json(user.toObject()); // Send toObject to include apiToken
   });
 };
 
