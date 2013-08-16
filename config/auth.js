@@ -1,7 +1,7 @@
 var db = require('../app/db'),
   unauthorizedError = require('../app/errors').unauthorizedError,
   passport = require('passport'),
-  LocalStrategy = require('passport-local').Strategy;
+  BasicStrategy = require('passport-http').Strategy;
 
 // Manage authentification
 module.exports = {
@@ -29,6 +29,8 @@ module.exports = {
         });
       }
     ));
-  }
+  },
+
+  loginPassport: passport.authenticate('basic', { session: false })
 
 };

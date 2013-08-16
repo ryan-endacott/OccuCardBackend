@@ -11,6 +11,10 @@ exports.register = function(req, res) {
   });
 };
 
+exports.getToken = function(req, res) {
+  res.json(req.user.toObject()); // Send toObject to include apiToken
+}
+
 exports.update = function(req, res) {
   req.user.set(req.body.user).save(function(err, user) {
     if (err) return badRequest(err, res);

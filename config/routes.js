@@ -4,11 +4,14 @@
 var index = require('../app/controllers/index'),
   user = require('../app/controllers/user'),
   contacts = require('../app/controllers/contacts'),
-  requireToken = require('./auth').requireToken;
+  auth = require('./auth'),
+  requireToken = auth.requireToken,
+  loginPassport = auth.loginPassport;
 
 module.exports = function(app) {
 
 	app.get('/', index.index);
+  app.get('/user/token', loginPassport, user.getToken);
   app.post('/user/register', user.register);
   app.post('/user/update', requireToken, user.update);
   app.get('/contacts', requireToken, contacts.all);
