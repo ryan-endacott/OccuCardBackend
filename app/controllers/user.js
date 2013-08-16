@@ -5,7 +5,6 @@ var db = require('../db'),
 
 exports.register = function(req, res) {
   var user = new User(req.body.user);
-  user.generateApiToken();
   user.save(function(err, user) {
     if (err) return badRequest(err, res);
     res.json(user.toObject()); // Send toObject to include apiToken
