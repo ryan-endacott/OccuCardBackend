@@ -3,6 +3,8 @@ var config = require('./config'),
 	express = require('express'),
 	db = require('../app/db'); // Connect to db.
 
+require('./auth').setupPassport();
+
 
 function errorHandler(err, req, res) {
 	console.log(err);

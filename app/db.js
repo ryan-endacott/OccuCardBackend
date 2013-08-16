@@ -15,7 +15,7 @@ db.once('open', function() {
 });
 
 var userSchema = new Schema({
-  username: {
+  email: {
     type: String,
     required: true,
     unique: true
@@ -29,10 +29,10 @@ var userSchema = new Schema({
   lastName: String,
   phoneNumber: String,
   companyName: String,
-  email: String,
   contacts: [{type : mongoose.Schema.ObjectId, ref : 'User'}]
 });
 
+// Generate api token
 userSchema.pre('save', function(next) {
   // Maybe make this pre init
   // If no api token already added
@@ -66,26 +66,6 @@ userSchema.methods.comparePassword = function(candidatePassword, cb) {
     cb(null, isMatch);
   });
 };
-
-// Use the LocalStrategy within Passport.
-//   Strategies in passport require a `verify` function, which accept
-//   credentials (in this case, a username and password), and invoke a callback
-//   with a user object.  In the real world, this would query a database;
-//   however, in this example we are using a baked-in set of users.
-passport.use(new LocalStrategy(function(username, password, done) {
-  User.findOne({ username: username }, function(err, user) {
-    if (err) { return done(err); }
-    if (!user) { return done(null, false, { message: 'Unknown user ' + username }); }
-    user.comparePassword(password, function(err, isMatch) {
-      if (err) return done(err);
-      if(isMatch) {
-        return done(null, user);
-      } else {
-        return done(null, false, { message: 'Invalid password' });
-      }
-    });
-  });
-}));
 
 
 // Don't return API Token of any user
