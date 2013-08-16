@@ -5,13 +5,6 @@ var config = require('./config'),
 
 require('./auth').setupPassport();
 
-
-function errorHandler(err, req, res) {
-	console.log(err);
-	res.status(err.status || 500);
-	res.json(err);
-}
-
 // Do express configuration and middleware
 
 module.exports = function(app) {
@@ -28,7 +21,6 @@ module.exports = function(app) {
 		app.use(express.session());
 		app.use(app.router);
 		app.use(express.static(__dirname + '/../public'));
-		app.use(errorHandler)
 	});
 
 	app.configure('development', function(){
