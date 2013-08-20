@@ -21,11 +21,14 @@ module.exports = {
   setupPassport: function setupPassport() {
     passport.use(new BasicStrategy(
       function(email, password, done) {
-        User.findOne({ email: email }, function (err, user) {
+        db.User.findOne({ email: email }, function (err, user) {
           if (err) { return done(err); }
           if (!user) { return done(null, false); }
-          if (!user.verifyPassword(password)) { return done(null, false); }
-          return done(null, user);
+          user.comparePassword(password, function(err, isMatch) {
+            if (err) return done(err);
+            if (isMatch) return done(null, user);
+            return done(null, false); // no match
+          });
         });
       }
     ));
