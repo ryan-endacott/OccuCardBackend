@@ -1,7 +1,8 @@
 
 var config = require('./config'),
 	express = require('express'),
-	db = require('../app/db'); // Connect to db.
+	db = require('../app/db'), // Connect to db.
+	passport = require('passport');
 
 require('./auth').setupPassport();
 
@@ -19,6 +20,7 @@ module.exports = function(app) {
 		app.use(express.methodOverride());
 		app.use(express.cookieParser('your secret here'));
 		app.use(express.session());
+		app.use(passport.initialize());
 		app.use(app.router);
 		app.use(express.static(__dirname + '/../public'));
 	});
