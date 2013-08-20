@@ -8,7 +8,8 @@
     "jade": "~0.34.1",
     "mongoose": "~3.6.17",
     "node-uuid": "~1.4.0",
-    "bcrypt": "~0.7.6"
+    "bcrypt": "~0.7.6",
+    "should": "~1.2.2"
   },
   "devDependencies": {},
   "scripts": {
