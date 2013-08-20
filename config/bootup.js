@@ -1,10 +1,8 @@
 
 var config = require('./config'),
 	express = require('express'),
-	db = require('../app/db'), // Connect to db.
-	passport = require('passport');
+	db = require('../app/db'); // Connect to db.
 
-require('./auth').setupPassport();
 
 // Do express configuration and middleware
 
@@ -18,7 +16,6 @@ module.exports = function(app) {
 		app.use(express.logger('dev'));
 		app.use(express.bodyParser());
 		app.use(express.methodOverride());
-		app.use(passport.initialize());
 		app.use(app.router);
 		app.use(express.static(__dirname + '/../public'));
 	});

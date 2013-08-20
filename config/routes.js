@@ -6,12 +6,12 @@ var index = require('../app/controllers/index'),
   contacts = require('../app/controllers/contacts'),
   auth = require('./auth'),
   requireToken = auth.requireToken,
-  loginPassport = auth.loginPassport;
+  login = auth.login;
 
 module.exports = function(app) {
 
 	app.get('/', index.index);
-  app.get('/user/token', loginPassport, user.getToken);
+  app.get('/user/token', login, user.getToken);
   app.post('/user/register', user.register);
   app.post('/user/update', requireToken, user.update);
   app.get('/contacts', requireToken, contacts.all);
