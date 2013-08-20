@@ -20,7 +20,7 @@ module.exports = {
     db.User.findOne({email: req.query.email}, function(err, user) {
       if (err) return next(err);
       if (!user) return unauthorizedError(null, res); // no user found
-      user.comparePassword(password, function(err, isMatch) {
+      user.comparePassword(req.query.password, function(err, isMatch) {
         if (err) return next(err);
         if (isMatch) {
           req.user = user;
