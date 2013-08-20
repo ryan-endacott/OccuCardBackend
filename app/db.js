@@ -36,7 +36,7 @@ var userSchema = new Schema({
 userSchema.pre('save', function(next) {
   // Maybe make this pre init
   // If no api token already added
-  if (!user.apiToken || user.apiToken.length != 36) {
+  if (!this.apiToken || this.apiToken.length != 36) {
     this.apiToken = uuid.v4();
     next();
   }
