@@ -1,7 +1,7 @@
 var db = require('../app/db'),
   unauthorizedError = require('../app/errors').unauthorizedError,
   passport = require('passport'),
-  BasicStrategy = require('passport-http').Strategy;
+  BasicStrategy = require('passport-http').BasicStrategy;
 
 // Manage authentification
 module.exports = {
