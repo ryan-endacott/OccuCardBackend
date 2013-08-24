@@ -11,8 +11,7 @@ var index = require('../app/controllers/index'),
 module.exports = function(app) {
 
 	app.get('/', index.index);
-  app.get('/user/token', login, user.getToken);
-  app.post('/user/register', user.register);
+  app.post('/user/register', user.registerOrGetToken);
   app.post('/user/update', requireToken, user.update);
   app.get('/contacts', requireToken, contacts.all);
   app.post('/contacts/add/email', requireToken, contacts.addByEmail);
