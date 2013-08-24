@@ -17,7 +17,7 @@ exports.addByEmail = function(req, res) {
     if (!newContact) return badRequest({
       message: 'No contact found with that email.'
     }, res);
-    console.log('NUMBAS:  ' + req.user.contacts.indexOf(newContact));
+    console.log('NUMBAS:  ' + req.user.contacts.indexOf(newContact._id));
     req.user.contacts.push(newContact);
     req.user.save(function(err, user) {
       if (err) return internalError(err, res);
