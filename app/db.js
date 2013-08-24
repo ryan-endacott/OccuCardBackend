@@ -78,6 +78,13 @@ userSchema.options.toJSON.transform = function (doc, ret, options) {
   delete ret.__v;
 }
 
+// Don't return API Token of any user
+// specify the transform schema option
+if (!userSchema.options.toObject) userSchema.options.toObject = {};
+userSchema.options.toObject.transform = function (doc, ret, options) {
+  delete ret.password;
+}
+
 module.exports = {
   User: mongoose.model('User', userSchema)
 }
