@@ -77,6 +77,7 @@ userSchema.options.toJSON.transform = function (doc, ret, options) {
   delete ret.token;
   delete ret.__v;
   delete ret.password;
+  delete ret.contacts;
 }
 
 // Don't send password hash on register.
