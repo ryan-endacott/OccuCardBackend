@@ -1,4 +1,5 @@
 var db = require('../app/db'),
+  config = require('./config'),
   unauthorizedError = require('../app/errors').unauthorizedError;
 
 // Manage authentification
@@ -15,6 +16,12 @@ module.exports = {
       req.user = user; // user found
       next();
     });
+  },
+
+  requireAppToken: function requireAppToken(req, res, next) {
+    var token = req.body.apiToken || req.query.apiToken;
+    if (!token || token != config.appToken) return unauthorizedError(null, res);
+    next();
   }
 
 };

@@ -1,6 +1,7 @@
 
 var config = require('./config'),
 	express = require('express'),
+	globalAppToken = require('./auth').requireAppToken,
 	db = require('../app/db'); // Connect to db.
 
 
@@ -16,6 +17,7 @@ module.exports = function(app) {
 		app.use(express.logger('dev'));
 		app.use(express.bodyParser());
 		app.use(express.methodOverride());
+		app.use(globalAppToken);
 		app.use(app.router);
 		app.use(express.static(__dirname + '/../public'));
 	});

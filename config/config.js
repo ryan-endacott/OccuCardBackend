@@ -14,6 +14,7 @@ catch (e) {
 
 var config = {
   port: process.env.PORT || 3000,
+  appToken: s.appToken || process.env.APPTOKEN,
   db: {
     uri: s.db.uri || process.env.DB
   }
