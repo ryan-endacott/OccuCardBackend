@@ -2,7 +2,7 @@ var db = require('../db'),
   User = db.User,
   errors = require('../errors'),
   badRequest = errors.badRequestError,
-  unauthorizedError = errors.unauthorizedError;
+  loginUnauthorizedError = errors.loginUnauthorizedError;
 
 exports.registerOrGetToken = function(req, res) {
 
@@ -24,7 +24,7 @@ exports.registerOrGetToken = function(req, res) {
           res.json(user.toObject()); // Send toObject to include apiToken
         }
         else {
-          return unauthorizedError(null, res); // no match
+          return loginUnauthorizedError(null, res); // no match
         }
       });
     }

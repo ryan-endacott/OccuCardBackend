@@ -4,13 +4,23 @@ module.exports = {
     res.send(400, err);
   },
 
+  loginUnauthorizedError: function(err, res) {
+    res.send(401, {
+      error: {
+        code: 401,
+        type: 'Unauthorized'
+      },
+      message: 'Failed to authenticate.  Email may already be taken.'
+    });
+  },
+
   unauthorizedError: function(err, res) {
     res.send(401, {
       error: {
         code: 401,
         type: 'Unauthorized'
       },
-      message: 'Failed to authenticate.'
+      message: 'Failed to authenticate with API token.'
     });
   },
 
