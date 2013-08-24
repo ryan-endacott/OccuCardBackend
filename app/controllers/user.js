@@ -33,9 +33,14 @@ exports.registerOrGetToken = function(req, res) {
 };
 
 exports.update = function(req, res) {
-  req.user.set(req.body.user).save(function(err, user) {
-    if (err) return badRequest(err, res);
-    res.json(user);
-  });
+  if (req.body.user) { // If user info supplied, update
+    req.user.set(req.body.user).save(function(err, user) {
+      if (err) return badRequest(err, res);
+      res.json(user);
+    });
+
+  } else { // Otherwise, just return user info
+    res.json(req.user);
+  }
 };
 
