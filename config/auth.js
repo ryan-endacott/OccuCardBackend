@@ -5,9 +5,9 @@ var db = require('../app/db'),
 module.exports = {
 
   requireToken: function requireToken(req, res, next) {
-    var token = req.body.apiToken || req.query.apiToken;
+    var token = req.body.userToken || req.query.userToken;
     db.User.findOne({
-      apiToken: token
+      token: token
     }, function(err, user) {
       if (err) return next(err);
       if (!user) return unauthorizedError(null, res); // no user found

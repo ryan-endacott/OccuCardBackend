@@ -24,7 +24,7 @@ var userSchema = new Schema({
     type: String,
     required: true
   },
-  apiToken: String,
+  token: String,
   firstName: String,
   lastName: String,
   phoneNumber: String,
@@ -32,12 +32,12 @@ var userSchema = new Schema({
   contacts: [{type : mongoose.Schema.ObjectId, ref : 'User'}]
 });
 
-// Generate api token
+// Generate user API token
 userSchema.pre('save', function(next) {
   // Maybe make this pre init
-  // If no api token already added
-  if (!this.apiToken || this.apiToken.length != 36) {
-    this.apiToken = uuid.v4();
+  // If no user API token already added
+  if (!this.token || this.token.length != 36) {
+    this.token = uuid.v4();
   }
 
   next();
@@ -69,17 +69,16 @@ userSchema.methods.comparePassword = function(candidatePassword, cb) {
 };
 
 
-// Don't return API Token of any user
+// Don't return token of any user
 // specify the transform schema option
 if (!userSchema.options.toJSON) userSchema.options.toJSON = {};
 userSchema.options.toJSON.transform = function (doc, ret, options) {
   delete ret._id;
-  delete ret.apiToken;
+  delete ret.token;
   delete ret.__v;
 }
 
-// Don't return API Token of any user
-// specify the transform schema option
+// Don't send password hash on register.
 if (!userSchema.options.toObject) userSchema.options.toObject = {};
 userSchema.options.toObject.transform = function (doc, ret, options) {
   delete ret.password;
