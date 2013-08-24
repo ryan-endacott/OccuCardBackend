@@ -6,6 +6,7 @@ module.exports = {
 
   requireToken: function requireToken(req, res, next) {
     var token = req.body.userToken || req.query.userToken;
+    if (!token) return unauthorizedError(null, res);
     db.User.findOne({
       token: token
     }, function(err, user) {
