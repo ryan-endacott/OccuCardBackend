@@ -4,5 +4,5 @@
  */
 
 exports.index = function(req, res){
-  res.render('index', {title: 'Backend'});
+  res.render('index', {title: 'OccuCard!'});
 };
