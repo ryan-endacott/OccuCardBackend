@@ -19,7 +19,7 @@ exports.addByEmail = function(req, res) {
       message: 'No contact found with that email.'
     }, res);
 
-    if (req.user._id == newContact._id) {
+    if (req.user.email === newContact.email) {
       return badRequest({
         message: 'You cannot add yourself as a contact.'
       }, res);
