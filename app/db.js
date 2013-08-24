@@ -38,8 +38,9 @@ userSchema.pre('save', function(next) {
   // If no api token already added
   if (!this.apiToken || this.apiToken.length != 36) {
     this.apiToken = uuid.v4();
-    next();
   }
+
+  next();
 });
 
 // Bcrypt middleware for hashing password
